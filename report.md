@@ -4,7 +4,7 @@ Project | Details
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
 Config  | `pyproject.toml`
 Default | Yes
-Date    | Mon, 24 May 2021 19:06:53 +0200 
+Date    | Mon, 24 May 2021 20:37:21 +0200 
 Number of Python files | 4
 Lines of Python code | 172
 
@@ -29,14 +29,8 @@ Passed | Score | Weight | Rule | Slug
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
-❌ | 0.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
+✅ | 100.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
 ✅ | 100.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
-
-#### Details — Project should only use one dependency manager — ❌
-
-Your project was found to be using multiple dependency managers: [Poetry requirements.txt]
-
-Since you are using Poetry, the `requirements.txt` file in your project is redundant. Migrate any dependencies left in there to Poetry and remove it.
 
 ### Code Quality (`code-quality`)
 
@@ -137,9 +131,9 @@ Mypy reported **24** issues with your project:
 
 Black reported **4** files in your project that it would reformat:
 
+- `src/evaluate.py`
 - `src/train.py`
 - `src/prepare.py`
-- `src/evaluate.py`
 - `src/featurization.py`
 
 Black can fix these issues automatically when you run `black .` in your project.
