@@ -16,7 +16,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 # Download the dataset
-python data/get_data.py
+dvc pull
 
 # Runs the scripts to prepare the training data, featurize it, train the model and evaluate it.
 python src/prepare.py data/data.xml

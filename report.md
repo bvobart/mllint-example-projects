@@ -4,9 +4,9 @@ Project | Details
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
 Config  | `default`
 Default | Yes
-Date    | Mon, 24 May 2021 18:28:30 +0200 
-Number of Python files | 5
-Lines of Python code | 183
+Date    | Mon, 24 May 2021 19:00:06 +0200 
+Number of Python files | 4
+Lines of Python code | 172
 
 ---
 
@@ -18,11 +18,11 @@ Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project uses Git | `version-control/code/git`
 ✅ | 100.0% | 1 | Project should not use Git to track large files | `version-control/code/git-no-big-files`
-❌ | 0.0% | 1 | DVC: Project uses Data Version Control | `version-control/data/dvc`
-❌ | 0.0% | 1 | DVC: Is installed | `version-control/data/dvc-is-installed`
-❌ | 0.0% | 1 | DVC: Folder '.dvc' should be committed to Git | `version-control/data/commit-dvc-folder`
-❌ | 0.0% | 1 | DVC: Should have at least one remote data storage configured | `version-control/data/dvc-has-remote`
-❌ | 0.0% | 1 | DVC: Should be tracking at least one data file | `version-control/data/dvc-has-files`
+✅ | 100.0% | 1 | DVC: Project uses Data Version Control | `version-control/data/dvc`
+✅ | 100.0% | 1 | DVC: Is installed | `version-control/data/dvc-is-installed`
+✅ | 100.0% | 1 | DVC: Folder '.dvc' should be committed to Git | `version-control/data/commit-dvc-folder`
+✅ | 100.0% | 1 | DVC: Should have at least one remote data storage configured | `version-control/data/dvc-has-remote`
+✅ | 100.0% | 1 | DVC: Should be tracking at least one data file | `version-control/data/dvc-has-files`
 
 ### Dependency Management (`dependency-management`)
 
@@ -82,16 +82,8 @@ e.g. using `poetry add --dev pylint` or `pipenv install --dev pylint`
 
 #### Details — Pylint reports no issues with this project — ❌
 
-Pylint reported **32** issues with your project:
+Pylint reported **24** issues with your project:
 
-- `data/get_data.py:7,0` - _(C0301)_ Line too long (114/100)
-- `data/get_data.py:9,0` - _(C0301)_ Line too long (129/100)
-- `data/get_data.py:11,0` - _(W0311)_ Bad indentation. Found 2 spaces, expected 4
-- `data/get_data.py:12,0` - _(W0311)_ Bad indentation. Found 2 spaces, expected 4
-- `data/get_data.py:14,0` - _(W0311)_ Bad indentation. Found 2 spaces, expected 4
-- `data/get_data.py:15,0` - _(W0311)_ Bad indentation. Found 2 spaces, expected 4
-- `data/get_data.py:16,0` - _(W0311)_ Bad indentation. Found 4 spaces, expected 8
-- `data/get_data.py:6,0` - _(C0103)_ Constant name "url" doesn't conform to UPPER_CASE naming style
 - `src/evaluate.py:1,0` - _(C0114)_ Missing module docstring
 - `src/evaluate.py:6,0` - _(E0401)_ Unable to import 'sklearn.metrics'
 - `src/featurization.py:1,0` - _(C0114)_ Missing module docstring
@@ -120,7 +112,7 @@ Pylint reported **32** issues with your project:
 
 #### Details — Mypy reports no issues with this project — ❌
 
-Mypy reported **25** issues with your project:
+Mypy reported **24** issues with your project:
 
 - `src/evaluate.py:6,1` - Error: Cannot find implementation or library stub for module named 'sklearn.metrics'  [import]
 - `src/evaluate.py:6,1` - Note: See https://mypy.readthedocs.io/en/latest/running_mypy.html#missing-imports
@@ -146,30 +138,27 @@ Mypy reported **25** issues with your project:
 - `src/featurization.py:76,1` - Error: Call to untyped function "save_matrix" in typed context  [no-untyped-call]
 - `src/featurization.py:79,11` - Error: Call to untyped function "get_df" in typed context  [no-untyped-call]
 - `src/featurization.py:84,1` - Error: Call to untyped function "save_matrix" in typed context  [no-untyped-call]
-- `data/get_data.py:12,18` - Error: Item "None" of "Optional[Match[str]]" has no attribute "group"  [union-attr]
 
 
 #### Details — Black reports no issues with this project — ❌
 
-Black reported **5** files in your project that it would reformat:
+Black reported **4** files in your project that it would reformat:
 
-- `data/get_data.py`
+- `src/evaluate.py`
 - `src/train.py`
 - `src/prepare.py`
-- `src/evaluate.py`
 - `src/featurization.py`
 
 Black can fix these issues automatically when you run `black .` in your project.
 
 #### Details — isort reports no issues with this project — ❌
 
-isort reported **5** files in your project that it would fix:
+isort reported **4** files in your project that it would fix:
 
 - `src/evaluate.py` - Imports are incorrectly sorted and/or formatted.
 - `src/train.py` - Imports are incorrectly sorted and/or formatted.
 - `src/prepare.py` - Imports are incorrectly sorted and/or formatted.
 - `src/featurization.py` - Imports are incorrectly sorted and/or formatted.
-- `data/get_data.py` - Imports are incorrectly sorted and/or formatted.
 
 isort can fix these issues automatically when you run `isort .` in your project.
 
