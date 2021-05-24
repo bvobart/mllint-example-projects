@@ -1,0 +1,10 @@
+.venv
+
+/data/data.xml
+/data/prepared
+/data/features
+model.pkl
+
+prc.json
+roc.json
+scores.json
