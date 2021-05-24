@@ -1,0 +1,3 @@
+[bandit]
+# Skips Pickle related rules and rule about stdlib PRNGs, we don't need cryptographic strength PRNGs for determining train/test split.
+skips: B403,B301,B311

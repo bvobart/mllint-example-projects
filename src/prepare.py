@@ -10,9 +10,9 @@ import os
 import random
 import re
 import sys
-import xml.etree.ElementTree
 from typing import Optional
 
+import defusedxml.ElementTree
 import yaml
 
 params = yaml.safe_load(open("params.yaml"))["prepare"]
@@ -34,8 +34,8 @@ output_test_path = os.path.join("data", "prepared", "test.tsv")
 def parse_post(line: str, line_no: int) -> Optional[dict[str, str]]:
     "Parses a raw line of XML post data into XML attributes, returning None on error."
     try:
-        return xml.etree.ElementTree.fromstring(line).attrib
-    except xml.etree.ElementTree.ParseError as parse_ex:
+        return defusedxml.ElementTree.fromstring(line).attrib
+    except defusedxml.ElementTree.ParseError as parse_ex:
         sys.stderr.write(f"XML parsing error at line {line_no}: {parse_ex}\n")
         return None
 
