@@ -6,6 +6,8 @@ This repository contains a set of example projects for [`mllint`](https://github
 
 This branch implements a basic ML project with a `requirements.txt` to track Python dependencies, no code or data quality linting and no data versioning or CI.
 
+To view `mllint`'s report for this project, see [report.md](report.md)
+
 To run this project, run the following commands in order:
 ```sh
 # Install dependencies in a virtualenv
