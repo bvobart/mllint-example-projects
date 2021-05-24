@@ -1,3 +1,8 @@
+"""
+Module featurization.py is responsible for taking the train and test TSV files
+and generating their feature matrices using count vectorisation and tf-idf transformation.
+"""
+
 import os
 import pickle
 import sys
@@ -26,31 +31,36 @@ max_features = params["max_features"]
 ngrams = params["ngrams"]
 
 
-def get_df(data):
-    df = pd.read_csv(data, encoding="utf-8", header=None, delimiter="\t", names=["id", "label", "text"])
-    sys.stderr.write(f"The input data frame {data} size is {df.shape}\n")
-    return df
+def parse_input_tsv(input_file):
+    """
+    This function reads the given TSV input file and returns its contents as a Pandas DataFrame.
+    """
+    data = pd.read_csv(input_file, encoding="utf-8", header=None, delimiter="\t", names=["id", "label", "text"])
+    sys.stderr.write(f"The input data frame {data} size is {data.shape}\n")
+    return data
 
 
-def save_matrix(df, matrix, output):
-    id_matrix = sparse.csr_matrix(df.id.astype(np.int64)).T
-    label_matrix = sparse.csr_matrix(df.label.astype(np.int64)).T
+def save_matrix(data, matrix, output):
+    """
+    This function saves a csr_matrix output by a TfidfTransformer.transform() to an output file as a Pickle.
+    """
+    id_matrix = sparse.csr_matrix(data.id.astype(np.int64)).T
+    label_matrix = sparse.csr_matrix(data.label.astype(np.int64)).T
 
     result = sparse.hstack([id_matrix, label_matrix, matrix], format="csr")
 
     msg = "The output matrix {} size is {} and data type is {}\n"
     sys.stderr.write(msg.format(output, result.shape, result.dtype))
 
-    with open(output, "wb") as fd:
-        pickle.dump(result, fd, pickle.HIGHEST_PROTOCOL)
-    pass
+    with open(output, "wb") as output_file:
+        pickle.dump(result, output_file, pickle.HIGHEST_PROTOCOL)
 
 
 os.makedirs(sys.argv[2], exist_ok=True)
 
 # Generate train feature matrix
-df_train = get_df(train_input)
-train_words = np.array(df_train.text.str.lower().values.astype("U"))
+data_train = parse_input_tsv(train_input)
+train_words = np.array(data_train.text.str.lower().values.astype("U"))
 
 bag_of_words = CountVectorizer(stop_words="english", max_features=max_features, ngram_range=(1, ngrams))
 
@@ -60,12 +70,12 @@ tfidf = TfidfTransformer(smooth_idf=False)
 tfidf.fit(train_words_binary_matrix)
 train_words_tfidf_matrix = tfidf.transform(train_words_binary_matrix)
 
-save_matrix(df_train, train_words_tfidf_matrix, train_output)
+save_matrix(data_train, train_words_tfidf_matrix, train_output)
 
 # Generate test feature matrix
-df_test = get_df(test_input)
-test_words = np.array(df_test.text.str.lower().values.astype("U"))
+data_test = parse_input_tsv(test_input)
+test_words = np.array(data_test.text.str.lower().values.astype("U"))
 test_words_binary_matrix = bag_of_words.transform(test_words)
 test_words_tfidf_matrix = tfidf.transform(test_words_binary_matrix)
 
-save_matrix(df_test, test_words_tfidf_matrix, test_output)
+save_matrix(data_test, test_words_tfidf_matrix, test_output)

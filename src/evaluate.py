@@ -1,3 +1,8 @@
+"""
+Module `evaluate.py` is responsible for loading the model, letting it make predictions on the testing data
+and then measuring the precision and recall metrics.
+"""
+
 import json
 import os
 import pickle
