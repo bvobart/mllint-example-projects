@@ -18,3 +18,14 @@ scipy = "^1.6.1"
 [tool.poetry.dev-dependencies]
 dvc = "^2.0.5"
 mllint = "^0.8.5"
+pylint = "^2.8.2"
+mypy = "^0.812"
+black = "^21.5b1"
+isort = "^5.8.0"
+bandit = "^1.7.0"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"

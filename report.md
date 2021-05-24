@@ -4,7 +4,7 @@ Project | Details
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
 Config  | `pyproject.toml`
 Default | Yes
-Date    | Mon, 24 May 2021 20:37:21 +0200 
+Date    | Mon, 24 May 2021 20:48:36 +0200 
 Number of Python files | 4
 Lines of Python code | 172
 
@@ -36,48 +36,33 @@ Passed | Score | Weight | Rule | Slug
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
-❌ | 0.0% | 1 | Project should use code quality linters | `code-quality/use-linters`
+✅ | 100.0% | 1 | Project should use code quality linters | `code-quality/use-linters`
 ✅ | 100.0% | 1 | All code quality linters should be installed in the current environment | `code-quality/linters-installed`
 ❌ | 0.0% | 1 | Pylint reports no issues with this project | `code-quality/pylint/no-issues`
-❌ | 0.0% | 1 | Pylint is configured for this project | `code-quality/pylint/is-configured`
+✅ | 100.0% | 1 | Pylint is configured for this project | `code-quality/pylint/is-configured`
 ❌ | 0.0% | 1 | Mypy reports no issues with this project | `code-quality/mypy/no-issues`
 ❌ | 0.0% | 1 | Black reports no issues with this project | `code-quality/black/no-issues`
 ❌ | 0.0% | 1 | isort reports no issues with this project | `code-quality/isort/no-issues`
-❌ | 0.0% | 0 | isort is properly configured | `code-quality/isort/is-configured`
+✅ | 100.0% | 0 | isort is properly configured | `code-quality/isort/is-configured`
 ❌ | 0.0% | 1 | Bandit reports no issues with this project | `code-quality/bandit/no-issues`
 
-#### Details — Project should use code quality linters — ❌
+#### Details — Project should use code quality linters — ✅
 
-Oh my, no code quality linters were detected in your project!
+Hooray, all linters detected:
 
-We recommend that you start using the following linters in your project to help you measure and maintain the quality of your code:
-
+- isort
+- Bandit
 - Pylint
 - Mypy
 - Black
-- isort
-- Bandit
-
-
-This rule will be satisfied, iff for each of these linters:
-- **Either** there is a configuration file for this linter in the project
-- **Or** the linter is a dependency of the project
-
-Specifically, we recommend adding each linter to the development dependencies of your dependency manager,
-e.g. using `poetry add --dev pylint` or `pipenv install --dev pylint`
 
 
 #### Details — Pylint reports no issues with this project — ❌
 
-Pylint reported **24** issues with your project:
+Pylint reported **18** issues with your project:
 
 - `src/evaluate.py:1,0` - _(C0114)_ Missing module docstring
-- `src/evaluate.py:6,0` - _(E0401)_ Unable to import 'sklearn.metrics'
 - `src/featurization.py:1,0` - _(C0114)_ Missing module docstring
-- `src/featurization.py:3,0` - _(E0401)_ Unable to import 'pandas'
-- `src/featurization.py:6,0` - _(E0401)_ Unable to import 'scipy.sparse'
-- `src/featurization.py:9,0` - _(E0401)_ Unable to import 'sklearn.feature_extraction.text'
-- `src/featurization.py:10,0` - _(E0401)_ Unable to import 'sklearn.feature_extraction.text'
 - `src/featurization.py:32,0` - _(C0116)_ Missing function or method docstring
 - `src/featurization.py:33,4` - _(C0103)_ Variable name "df" doesn't conform to snake_case naming style
 - `src/featurization.py:44,0` - _(C0103)_ Argument name "df" doesn't conform to snake_case naming style
@@ -94,31 +79,28 @@ Pylint reported **24** issues with your project:
 - `src/prepare.py:41,15` - _(W0703)_ Catching too general exception Exception
 - `src/train.py:1,0` - _(C0114)_ Missing module docstring
 - `src/train.py:15,0` - _(W0622)_ Redefining built-in 'input'
-- `src/train.py:6,0` - _(E0401)_ Unable to import 'sklearn.ensemble'
 
 
 #### Details — Mypy reports no issues with this project — ❌
 
-Mypy reported **24** issues with your project:
+Mypy reported **22** issues with your project:
 
-- `src/evaluate.py:6,1` - Error: Cannot find implementation or library stub for module named 'sklearn.metrics'  [import]
+- `src/evaluate.py:6,1` - Error: Skipping analyzing 'sklearn.metrics': found module but no type hints or library stubs  [import]
 - `src/evaluate.py:6,1` - Note: See https://mypy.readthedocs.io/en/latest/running_mypy.html#missing-imports
-- `src/evaluate.py:6,1` - Error: Cannot find implementation or library stub for module named 'sklearn'  [import]
+- `src/evaluate.py:6,1` - Error: Skipping analyzing 'sklearn': found module but no type hints or library stubs  [import]
 - `src/evaluate.py:37,6` - Error: Incompatible types in assignment (expression has type "TextIO", variable has type "BinaryIO")  [assignment]
 - `src/evaluate.py:38,59` - Error: Argument 2 to "dump" has incompatible type "BinaryIO"; expected "IO[str]"  [arg-type]
 - `src/evaluate.py:40,6` - Error: Incompatible types in assignment (expression has type "TextIO", variable has type "BinaryIO")  [assignment]
 - `src/evaluate.py:46,9` - Error: Argument 2 to "dump" has incompatible type "BinaryIO"; expected "IO[str]"  [arg-type]
 - `src/evaluate.py:48,6` - Error: Incompatible types in assignment (expression has type "TextIO", variable has type "BinaryIO")  [assignment]
 - `src/evaluate.py:54,9` - Error: Argument 2 to "dump" has incompatible type "BinaryIO"; expected "IO[str]"  [arg-type]
-- `src/train.py:4,1` - Error: Skipping analyzing 'numpy': found module but no type hints or library stubs  [import]
-- `src/train.py:6,1` - Error: Cannot find implementation or library stub for module named 'sklearn.ensemble'  [import]
+- `src/train.py:6,1` - Error: Skipping analyzing 'sklearn.ensemble': found module but no type hints or library stubs  [import]
 - `src/prepare.py:25,1` - Error: Function is missing a type annotation  [no-untyped-def]
 - `src/prepare.py:50,13` - Error: Call to untyped function "process_posts" in typed context  [no-untyped-call]
-- `src/featurization.py:3,1` - Error: Cannot find implementation or library stub for module named 'pandas'  [import]
-- `src/featurization.py:4,1` - Error: Skipping analyzing 'numpy': found module but no type hints or library stubs  [import]
-- `src/featurization.py:6,1` - Error: Cannot find implementation or library stub for module named 'scipy.sparse'  [import]
-- `src/featurization.py:6,1` - Error: Cannot find implementation or library stub for module named 'scipy'  [import]
-- `src/featurization.py:9,1` - Error: Cannot find implementation or library stub for module named 'sklearn.feature_extraction.text'  [import]
+- `src/featurization.py:3,1` - Error: Skipping analyzing 'pandas': found module but no type hints or library stubs  [import]
+- `src/featurization.py:6,1` - Error: Skipping analyzing 'scipy.sparse': found module but no type hints or library stubs  [import]
+- `src/featurization.py:6,1` - Error: Skipping analyzing 'scipy': found module but no type hints or library stubs  [import]
+- `src/featurization.py:9,1` - Error: Skipping analyzing 'sklearn.feature_extraction.text': found module but no type hints or library stubs  [import]
 - `src/featurization.py:32,1` - Error: Function is missing a type annotation  [no-untyped-def]
 - `src/featurization.py:44,1` - Error: Function is missing a type annotation  [no-untyped-def]
 - `src/featurization.py:61,12` - Error: Call to untyped function "get_df" in typed context  [no-untyped-call]
@@ -131,8 +113,8 @@ Mypy reported **24** issues with your project:
 
 Black reported **4** files in your project that it would reformat:
 
-- `src/evaluate.py`
 - `src/train.py`
+- `src/evaluate.py`
 - `src/prepare.py`
 - `src/featurization.py`
 
@@ -148,21 +130,6 @@ isort reported **4** files in your project that it would fix:
 - `src/featurization.py` - Imports are incorrectly sorted and/or formatted.
 
 isort can fix these issues automatically when you run `isort .` in your project.
-
-#### Details — isort is properly configured — ❌
-
-isort is not properly configured.
-In order to be compatible with [Black](https://github.com/psf/black), which mllint also recommends using,
-you should configure `isort` to use the `black` profile.
-Furthermore, we recommend centralising your configuration in your `pyproject.toml`
-
-Thus, ensure that your `pyproject.toml` contains at least the following section:
-
-```toml
-[tool.isort]
-profile = "black"
-```
-
 
 #### Details — Bandit reports no issues with this project — ❌
 
