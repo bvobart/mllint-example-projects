@@ -2,9 +2,9 @@
 Project | Details
 --------|--------
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
-Config  | `default`
+Config  | `pyproject.toml`
 Default | Yes
-Date    | Mon, 24 May 2021 19:00:06 +0200 
+Date    | Mon, 24 May 2021 19:06:53 +0200 
 Number of Python files | 4
 Lines of Python code | 172
 
@@ -28,22 +28,15 @@ Passed | Score | Weight | Rule | Slug
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
-❌ | 20.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
-✅ | 100.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
-❌ | 0.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
+✅ | 100.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
+❌ | 0.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
+✅ | 100.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
 
-#### Details — Project properly keeps track of its dependencies — ❌
+#### Details — Project should only use one dependency manager — ❌
 
-Your project seems to be managing its dependencies using a `requirements.txt` file.
-Such `requirements.txt` files have a high tendency to include unrelated packages or packages that cannot be resolved from [PyPI](https://pypi.org/) (Pip's standard package index),
-are hard to maintain as they have no distinction between run-time dependencies and development-time dependencies, nor direct and indirect dependencies,
-and may hamper the reproducibility of your ML project by underspecifying their exact versions and checksums.
+Your project was found to be using multiple dependency managers: [Poetry requirements.txt]
 
-We therefore recommend switching to Poetry or Pipenv and keeping track of all your dependencies there.
-
-#### Details — Project places its development dependencies in dev-dependencies — ❌
-
-Your project's main dependency manager is a `requirements.txt` file, which doesn't distinguish between regular dependencies and development dependencies.
+Since you are using Poetry, the `requirements.txt` file in your project is redundant. Migrate any dependencies left in there to Poetry and remove it.
 
 ### Code Quality (`code-quality`)
 
@@ -144,9 +137,9 @@ Mypy reported **24** issues with your project:
 
 Black reported **4** files in your project that it would reformat:
 
-- `src/evaluate.py`
 - `src/train.py`
 - `src/prepare.py`
+- `src/evaluate.py`
 - `src/featurization.py`
 
 Black can fix these issues automatically when you run `black .` in your project.
