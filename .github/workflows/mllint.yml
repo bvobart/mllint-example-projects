@@ -42,4 +42,5 @@ jobs:
       - name: Upload `mllint` report
         uses: actions/upload-artifact@v2
         with:
+          name: mllint-report.md
           path: mllint-report.md
