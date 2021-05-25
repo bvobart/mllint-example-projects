@@ -21,11 +21,11 @@ scores_file = sys.argv[3]
 prc_file = sys.argv[4]
 roc_file = sys.argv[5]
 
-with open(model_file, "rb") as fd:
-    model = pickle.load(fd)
+with open(model_file, "rb") as model_io:
+    model = pickle.load(model_io)
 
-with open(matrix_file, "rb") as fd:
-    matrix = pickle.load(fd)
+with open(matrix_file, "rb") as matrix_io:
+    matrix = pickle.load(matrix_io)
 
 labels = matrix[:, 1].toarray()
 x = matrix[:, 2:]
@@ -39,17 +39,19 @@ fpr, tpr, roc_thresholds = metrics.roc_curve(labels, predictions)
 avg_prec = metrics.average_precision_score(labels, predictions)
 roc_auc = metrics.roc_auc_score(labels, predictions)
 
-with open(scores_file, "w") as fd:
-    json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
+with open(scores_file, "w") as scores_io:
+    json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, scores_io, indent=4)
 
-with open(prc_file, "w") as fd:
+with open(prc_file, "w") as prc_io:
     json.dump(
         {"prc": [{"precision": p, "recall": r, "threshold": t} for p, r, t in zip(precision, recall, prc_thresholds)]},
-        fd,
+        prc_io,
         indent=4,
     )
 
-with open(roc_file, "w") as fd:
+with open(roc_file, "w") as roc_io:
     json.dump(
-        {"roc": [{"fpr": fp, "tpr": tp, "threshold": t} for fp, tp, t in zip(fpr, tpr, roc_thresholds)]}, fd, indent=4
+        {"roc": [{"fpr": fp, "tpr": tp, "threshold": t} for fp, tp, t in zip(fpr, tpr, roc_thresholds)]},
+        roc_io,
+        indent=4,
     )

@@ -30,3 +30,18 @@ line-length = 120
 
 [tool.isort]
 profile = "black"
+
+[tool.mypy]
+[[tool.mypy.overrides]]
+# Ignore missing type definitions for these packages.
+# NOTE: once [this issue](https://github.com/python/mypy/issues/5205) is fixed, 
+# then pyproject.toml configuration for mypy will actually work.
+# They already updated their documentation it, but didn't actually release the functionality yet.
+# TODO: this section works, remove .mypy.ini
+module = [
+  "defusedxml.*",
+  "pandas.*",
+  "scipy.*",
+  "sklearn.*",
+]
+ignore_missing_imports = true

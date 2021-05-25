@@ -31,7 +31,7 @@ max_features = params["max_features"]
 ngrams = params["ngrams"]
 
 
-def parse_input_tsv(input_file):
+def parse_input_tsv(input_file: str) -> pd.DataFrame:
     """
     This function reads the given TSV input file and returns its contents as a Pandas DataFrame.
     """
@@ -40,7 +40,7 @@ def parse_input_tsv(input_file):
     return data
 
 
-def save_matrix(data, matrix, output):
+def save_matrix(data: pd.DataFrame, matrix: sparse.csr_matrix, output: str) -> None:
     """
     This function saves a csr_matrix output by a TfidfTransformer.transform() to an output file as a Pickle.
     """

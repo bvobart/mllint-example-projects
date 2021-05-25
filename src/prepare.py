@@ -10,7 +10,7 @@ import os
 import random
 import re
 import sys
-from typing import Optional
+from typing import IO, Optional, cast
 
 import defusedxml.ElementTree
 import yaml
@@ -34,13 +34,13 @@ output_test_path = os.path.join("data", "prepared", "test.tsv")
 def parse_post(line: str, line_no: int) -> Optional[dict[str, str]]:
     "Parses a raw line of XML post data into XML attributes, returning None on error."
     try:
-        return defusedxml.ElementTree.fromstring(line).attrib
+        return cast(dict[str, str], defusedxml.ElementTree.fromstring(line).attrib)
     except defusedxml.ElementTree.ParseError as parse_ex:
         sys.stderr.write(f"XML parsing error at line {line_no}: {parse_ex}\n")
         return None
 
 
-def process_posts(xml_data, output_train, output_test, target_tag):
+def process_posts(xml_data: IO[str], output_train: IO[str], output_test: IO[str], target_tag: str) -> None:
     """
     Parses the StackOverflow posts from the `xml_data` and labels with a 1 if the post has the `target_tag` on it,
     0 otherwise. Then saves the post's ID, title, text and label to `output_train` and `output_test`,
