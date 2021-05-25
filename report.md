@@ -4,7 +4,7 @@ Project | Details
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
 Config  | `pyproject.toml`
 Default | Yes
-Date    | Tue, 25 May 2021 21:31:37 +0200 
+Date    | Tue, 25 May 2021 21:58:48 +0200 
 Number of Python files | 4
 Lines of Python code | 164
 
@@ -50,11 +50,11 @@ Passed | Score | Weight | Rule | Slug
 
 Hooray, all linters detected:
 
-- Bandit
 - Pylint
 - Mypy
 - Black
 - isort
+- Bandit
 
 
 #### Details — Pylint reports no issues with this project — ✅
@@ -81,5 +81,5 @@ Congratulations, Bandit is happy with your project!
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
-❌ | 0.0% | 1 | Project uses Continuous Integration (CI) | `ci/use`
+✅ | 100.0% | 1 | Project uses Continuous Integration (CI) | `ci/use`
 
