@@ -37,7 +37,7 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Run `mllint`
-        run: mllint -o mllint-report.md
+        run: poetry run mllint -o mllint-report.md
 
       - name: Upload `mllint` report
         uses: actions/upload-artifact@v2
