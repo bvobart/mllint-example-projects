@@ -10,7 +10,7 @@ import os
 import random
 import re
 import sys
-from typing import IO, Optional, cast
+from typing import IO, Dict, Optional, cast
 
 import defusedxml.ElementTree
 import yaml
@@ -31,10 +31,10 @@ output_train_path = os.path.join("data", "prepared", "train.tsv")
 output_test_path = os.path.join("data", "prepared", "test.tsv")
 
 
-def parse_post(line: str, line_no: int) -> Optional[dict[str, str]]:
+def parse_post(line: str, line_no: int) -> Optional[Dict[str, str]]:
     "Parses a raw line of XML post data into XML attributes, returning None on error."
     try:
-        return cast(dict[str, str], defusedxml.ElementTree.fromstring(line).attrib)
+        return cast(Dict[str, str], defusedxml.ElementTree.fromstring(line).attrib)
     except defusedxml.ElementTree.ParseError as parse_ex:
         sys.stderr.write(f"XML parsing error at line {line_no}: {parse_ex}\n")
         return None
