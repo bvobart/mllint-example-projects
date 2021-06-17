@@ -1,6 +1,9 @@
 .venv
 .mypy_cache
 .vscode
+__pycache__
+.*_cache
+.coverage
 
 /data/data.xml
 /data/prepared
@@ -10,3 +13,5 @@ model.pkl
 prc.json
 roc.json
 scores.json
+tests-coverage.xml
+tests-report.xml
