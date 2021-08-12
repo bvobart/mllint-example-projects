@@ -15,10 +15,10 @@ To view `mllint`'s report for the current branch of this project, see [report.md
 3 | [`1-3-basic-poetry`](https://github.com/bvobart/mllint-example-projects/tree/1-3-basic-poetry) | Start using Poetry
 4 | [`1-4-basic-linting`](https://github.com/bvobart/mllint-example-projects/tree/1-4-basic-linting) | Add Pylint, Mypy, Black, isort and Bandit to dev dependencies, create configurations for Pylint and isort
 5 | [`1-5-basic-fix-codestyle`](https://github.com/bvobart/mllint-example-projects/tree/1-5-basic-fix-codestyle) | Run `black .` and `isort .` to fix code style issues
-6 | [`1-6-basic-fix-pylint`](https://github.com/bvobart/mllint-example-projects/tree/1-6-basic-pylint) | Fix all Pylint's code quality issues
-7 | [`1-7-basic-fix-bandit`](https://github.com/bvobart/mllint-example-projects/tree/1-7-basic-bandit) | Fix all Bandit's security issues
-8 | [`1-8-basic-fix-mypy`](https://github.com/bvobart/mllint-example-projects/tree/1-8-basic-mypy) | Fix all Mypy's type-checking issues.
-9 | [`1-9-basic-fix-ci`](https://github.com/bvobart/mllint-example-projects/tree/1-9-basic-ci) | Implement a basic CI pipeline to install the project's dependencies and run `mllint` on it, saving the report it generates as a pipeline artifact (e.g. [this artifact](https://github.com/bvobart/mllint-example-projects/suites/2828997561/artifacts/63048199)).
+6 | [`1-6-basic-pylint`](https://github.com/bvobart/mllint-example-projects/tree/1-6-basic-pylint) | Fix all Pylint's code quality issues
+7 | [`1-7-basic-bandit`](https://github.com/bvobart/mllint-example-projects/tree/1-7-basic-bandit) | Fix all Bandit's security issues
+8 | [`1-8-basic-mypy`](https://github.com/bvobart/mllint-example-projects/tree/1-8-basic-mypy) | Fix all Mypy's type-checking issues.
+9 | [`1-9-basic-ci`](https://github.com/bvobart/mllint-example-projects/tree/1-9-basic-ci) | Implement a basic CI pipeline to install the project's dependencies and run `mllint` on it, saving the report it generates as a pipeline artifact (e.g. [this artifact](https://github.com/bvobart/mllint-example-projects/suites/2828997561/artifacts/63048199)).
 
 To run this project, install Poetry (`pip install poetry`), then run the following commands in order:
 ```sh
@@ -27,6 +27,9 @@ poetry install
 
 # Download the dataset
 dvc pull
+
+# Optional: run the tests
+poetry run poe test
 
 # Runs the scripts to prepare the training data, featurize it, train the model and evaluate it.
 python src/prepare.py data/data.xml

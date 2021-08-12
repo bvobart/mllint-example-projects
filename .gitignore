@@ -13,5 +13,7 @@ model.pkl
 prc.json
 roc.json
 scores.json
+
 tests-coverage.xml
 tests-report.xml
+coverage.xml
