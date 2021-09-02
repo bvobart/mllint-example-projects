@@ -24,6 +24,7 @@ def parse_post(line: str, line_no: int) -> Optional[dict[str, str]]:
         sys.stderr.write(f"XML parsing error at line {line_no}: {parse_ex}\n")
         return None
 
+
 def process_post(post: dict[str, str], target_tag: str) -> str:
     """
     Processes a parsed post by labelling it with a 1 if it contains the target tag, or 0 if it doesn't.
@@ -35,6 +36,7 @@ def process_post(post: dict[str, str], target_tag: str) -> str:
     body = re.sub(r"\s+", " ", post.get("Body", "")).strip()
     text = title + " " + body
     return "{}\t{}\t{}\n".format(pid, label, text)
+
 
 def process_posts(
     xml_data: IO[str], output_train: IO[str], output_test: IO[str], split: float, target_tag: str

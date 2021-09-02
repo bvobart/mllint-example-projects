@@ -16,13 +16,14 @@ def test_parse_post() -> None:
     assert post["Title"] == "Searching and capturing a character using regular expressions Python"
     assert post["Tags"] == "<python><regex><search><text-files>"
 
+
 def test_process_post() -> None:
     "Tests the process_post method"
     post = {
-      "Id": "4186249",
-      "Body": "Loads of Text",
-      "Title": "Searching and capturing a character using regular expressions Python",
-      "Tags": "<python><regex><search><text-files>",
+        "Id": "4186249",
+        "Body": "Loads of Text",
+        "Title": "Searching and capturing a character using regular expressions Python",
+        "Tags": "<python><regex><search><text-files>",
     }
     csvline = process_post(post, "python")
     assert csvline == "4186249\t1\tSearching and capturing a character using regular expressions Python Loads of Text\n"
