@@ -17,11 +17,11 @@ scipy = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 dvc = "^2.0.5"
-mllint = "^0.8.5"
-pylint = "^2.8.2"
-mypy = "^0.812"
-black = "^21.5b1"
-isort = "^5.8.0"
+mllint = "^0.12.1"
+pylint = "^2.11.1"
+mypy = "^0.910"
+black = "^21.9b0"
+isort = "^5.9.3"
 bandit = "^1.7.0"
 
 [tool.black]
