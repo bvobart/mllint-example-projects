@@ -1,38 +1,46 @@
 # ML Project Report
-Project | Details
+**Project** | **Details**
 --------|--------
+Date    | Mon, 18 Oct 2021 00:15:56 +0200 
 Path    | `/home/bart/tudelft/thesis/mllint-example-projects`
 Config  | `pyproject.toml`
 Default | Yes
-Date    | Mon, 24 May 2021 20:56:51 +0200 
+Git: Remote URL | `git@github.com:bvobart/mllint-example-projects.git`
+Git: Commit     | `799d936bacdae8349d69db39fa080785bf0d96da`
+Git: Branch     | `1-5-basic-fix-codestyle`
+Git: Dirty Workspace?  | Yes
 Number of Python files | 4
-Lines of Python code | 150
+Lines of Python code   | 150
 
 ---
 
 ## Reports
 
-### Version Control (`version-control`)
+### Version Control (`version-control`) — **100.0**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project uses Git | `version-control/code/git`
-✅ | 100.0% | 1 | Project should not use Git to track large files | `version-control/code/git-no-big-files`
+✅ | 100.0% | 1 | Project should not have any large files in its Git history | `version-control/code/git-no-big-files`
 ✅ | 100.0% | 1 | DVC: Project uses Data Version Control | `version-control/data/dvc`
 ✅ | 100.0% | 1 | DVC: Is installed | `version-control/data/dvc-is-installed`
 ✅ | 100.0% | 1 | DVC: Folder '.dvc' should be committed to Git | `version-control/data/commit-dvc-folder`
 ✅ | 100.0% | 1 | DVC: Should have at least one remote data storage configured | `version-control/data/dvc-has-remote`
 ✅ | 100.0% | 1 | DVC: Should be tracking at least one data file | `version-control/data/dvc-has-files`
+ | _Total_ | | | 
+✅ | **100.0**% | | Version Control | `version-control`
 
-### Dependency Management (`dependency-management`)
+### Dependency Management (`dependency-management`) — **100.0**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
 ✅ | 100.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
 ✅ | 100.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
+ | _Total_ | | | 
+✅ | **100.0**% | | Dependency Management | `dependency-management`
 
-### Code Quality (`code-quality`)
+### Code Quality (`code-quality`) — **62.5**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
@@ -45,6 +53,8 @@ Passed | Score | Weight | Rule | Slug
 ✅ | 100.0% | 1 | isort reports no issues with this project | `code-quality/isort/no-issues`
 ✅ | 100.0% | 0 | isort is properly configured | `code-quality/isort/is-configured`
 ❌ | 0.0% | 1 | Bandit reports no issues with this project | `code-quality/bandit/no-issues`
+ | _Total_ | | | 
+❌ | **62.5**% | | Code Quality | `code-quality`
 
 #### Details — Project should use code quality linters — ✅
 
@@ -93,9 +103,9 @@ Mypy reported **22** issues with your project:
 - `src/evaluate.py:43,9` - Error: Argument 2 to "dump" has incompatible type "BinaryIO"; expected "IO[str]"  [arg-type]
 - `src/evaluate.py:47,6` - Error: Incompatible types in assignment (expression has type "TextIO", variable has type "BinaryIO")  [assignment]
 - `src/evaluate.py:49,107` - Error: Argument 2 to "dump" has incompatible type "BinaryIO"; expected "IO[str]"  [arg-type]
-- `src/train.py:7,1` - Error: Skipping analyzing 'sklearn.ensemble': found module but no type hints or library stubs  [import]
 - `src/prepare.py:26,1` - Error: Function is missing a type annotation  [no-untyped-def]
 - `src/prepare.py:51,13` - Error: Call to untyped function "process_posts" in typed context  [no-untyped-call]
+- `src/train.py:7,1` - Error: Skipping analyzing 'sklearn.ensemble': found module but no type hints or library stubs  [import]
 - `src/featurization.py:6,1` - Error: Skipping analyzing 'pandas': found module but no type hints or library stubs  [import]
 - `src/featurization.py:7,1` - Error: Skipping analyzing 'scipy.sparse': found module but no type hints or library stubs  [import]
 - `src/featurization.py:7,1` - Error: Skipping analyzing 'scipy': found module but no type hints or library stubs  [import]
@@ -131,9 +141,54 @@ Bandit reported **9** issues with your project:
 - `src/train.py:23` - _(B301, severity: MEDIUM, confidence: HIGH)_ - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue. [More Info](https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b301-pickle)
 
 
-### Continuous Integration (`ci`)
+### Testing (`testing`) — **0.0**%
+
+Passed | Score | Weight | Rule | Slug
+:-----:|------:|-------:|------|-----
+❌ | 0.0% | 1 | Project has automated tests | `testing/has-tests`
+❌ | 0.0% | 1 | Project passes all of its automated tests | `testing/pass`
+❌ | 0.0% | 1 | Project provides a test coverage report | `testing/coverage`
+❌ | 0.0% | 1 | Tests should be placed in the tests folder | `testing/tests-folder`
+ | _Total_ | | | 
+❌ | **0.0**% | | Testing | `testing`
+
+#### Details — Project has automated tests — ❌
+
+There are **0** test files in your project, but `mllint` was expecting at least **1**.
+
+#### Details — Project passes all of its automated tests — ❌
+
+No test report was provided.
+
+Please update the `testing.report` setting in your project's `mllint` configuration to specify the path to your project's test report.
+
+When using `pytest` to run your project's tests, use the `--junitxml=<filename>` option to generate such a test report, e.g.:
+```sh
+pytest --junitxml=tests-report.xml
+```
+
+
+#### Details — Project provides a test coverage report — ❌
+
+No test coverage report was provided.
+
+Please update the `testing.coverage.report` setting in your project's `mllint` configuration to specify the path to your project's test coverage report.
+
+Generating a test coverage report with `pytest` can be done by adding and installing `pytest-cov` as a development dependency of your project. Then use the following command to run your tests and generate both a test report as well as a coverage report:
+```sh
+pytest --junitxml=tests-report.xml --cov=path_to_package_under_test --cov-report=xml
+```
+
+
+#### Details — Tests should be placed in the tests folder — ❌
+
+Tip for when you start implementing tests: create a folder called `tests` at the root of your project and place all your Python test files in there, as per common convention.
+
+### Continuous Integration (`ci`) — **0.0**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ❌ | 0.0% | 1 | Project uses Continuous Integration (CI) | `ci/use`
+ | _Total_ | | | 
+❌ | **0.0**% | | Continuous Integration | `ci`
 
